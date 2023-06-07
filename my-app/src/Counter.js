@@ -2,19 +2,22 @@ import React from "react";
 import CounterDisplay from "./CounterDisplay";
 
 export class Counter extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            count: props.initialValue ?? 0,
-        };
+    state = {
+        count: props.initialValue ?? 0,
+    };
 
-        setInterval(() => {
+    componentDidMount() {
+        this._interval = setInterval(() => {
             this.setState((state) => {
                 return {
                     count: state.count + (props.incrementAmount),
-                }
-            })
+                };
+            });
         }, props.incrementInterval)
+    }
+
+    componentWillMount() {
+        clearInterval(this._interval);
     }
 
     render() {
@@ -25,3 +28,5 @@ export class Counter extends React.Component {
         )
     }
 }
+
+// the constructor is no longer required in the Counter component since the state initialization and interval setup are handled within the lifecycle methods
