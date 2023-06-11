@@ -27,10 +27,23 @@ export default class Login extends React.Component {
         }) 
     }
 
+    handleResetState = () => {
+        this.setState({
+            username:'',
+            password:''
+        })
+    }
+
     render() {
         return (
             <div>
+                <label>Username:</label>
+                <input name="username" value={this.state.username} onChange={this.handleUsername}/>
+                <label>Password:</label>
+                <input type="password" name="password" value={this.state.password} onChange={this.handlePassword}/>
+                <br/>
                 <button disabled={this.state.empty}>Login</button>
+                <button onClick={this.handleResetState}>Reset</button>
             </div>
         )
     }
