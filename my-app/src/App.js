@@ -7,8 +7,20 @@ import InteractiveWelcome from './InteractiveWelcome';
 import Login from './Login';
 import TodoList from './TodoList';
 
-export class App extends React.Component {
-    render () {
+export function App () {
+    const handleRender = (items, handleRemove) => {
+        return (
+          <ul>
+            {items.map((item) => (
+              <li key={item.id}> {item.text}
+              <button onClick={() => {
+                handleRemove(item.id)
+              }}>Remove</button> 
+              </li>
+            ))}
+          </ul>
+        )
+    }
         return (
             <div>
                 <h1>Hello</h1>
@@ -18,8 +30,7 @@ export class App extends React.Component {
                 <ClickTracker />
                 <InteractiveWelcome />
                 <Login />
-                <TodoList />
+                <TodoList render={handleRender}/>
             </div>
         )
-    }
 }

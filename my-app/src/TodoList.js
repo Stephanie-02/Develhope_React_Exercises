@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function TodoList() {
+export default function TodoList({render}) {
     
     const [todoItem, setTodoItem] = useState('');
     const [items, setItems] = useState([]);
@@ -36,7 +36,7 @@ export default function TodoList() {
           <button onClick={() => {
             handleReset();
           }}>Reset</button>
-          <ul>
+          {/* <ul>
           {items.map((item) => (
             <li key={item.id}> {item.text}
             <button onClick={() => {
@@ -45,7 +45,8 @@ export default function TodoList() {
             </li>
           ))}
             
-          </ul>
+          </ul> */}
+          {(render(items, handleRemove))}
         </div>
     )
 }
