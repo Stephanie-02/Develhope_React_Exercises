@@ -25,6 +25,10 @@ export default function TodoList() {
       setItems([]);
     }
 
+    const handleRemove = (itemId) => {
+      setItems((prevItems) => prevItems.filter((item) => item.id !== itemId))
+    }
+
     return (
         <div>
           <input type='text' value={todoItem} onChange={handleTodo} />
@@ -34,7 +38,11 @@ export default function TodoList() {
           }}>Reset</button>
           <ul>
           {items.map((item) => (
-            <li key={item.id}> {item.text} </li>
+            <li key={item.id}> {item.text}
+            <button onClick={() => {
+              handleRemove(item.id)
+            }}>Remove</button> 
+            </li>
           ))}
             
           </ul>
