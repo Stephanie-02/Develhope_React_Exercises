@@ -8,7 +8,7 @@ const LanguageProvider = ({ children }) => {
 
   return (
     <LanguageContext.Provider value={selectedLanguage}>
-      <DisplayLanguage/>
+      <DisplayLanguage />
       {children}
     </LanguageContext.Provider>
   );
