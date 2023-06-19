@@ -6,7 +6,8 @@ import ClickTracker from './ClickTracker';
 import InteractiveWelcome from './InteractiveWelcome';
 import Login from './Login';
 import TodoList from './TodoList';
-import LanguageProvider from './LanguageProvider';
+import { LanguageProvider } from './LanguageContext';
+import DisplayLanguage from './DisplayLanguage';
 
 export function App () {
     const handleRender = (items, handleRemove) => {

@@ -1,50 +1,50 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-export default class Login extends React.Component {
-    state = {
-        username: '',
-        password: '',
-        empty: false
-    }
-
-    handleUsername = (ev) => {
+export default function Login() {
+    const[username, setUsername] = useState('');
+    const[password, setPassword] = useState('');
+    const[remember, setRemember] = useState(false)
+    const[empty, setEmpty] = useState(false)
+    
+    const handleUsername = (ev) => {
         const username = ev.target.value;
-        const password = this.state.password;
+        const password = password;
 
-        this.setState({
-            username: username,
-            empty: password===''
-        }) 
-    }
+        setUsername(username);
+        setEmpty(password==='');
+    };
 
-    handlePassword = (ev) => {
+    const handlePassword = (ev) => {
         const password = ev.target.value;
-        const username = this.state.username;
+        const username = username;
 
-        this.setState({
-            password: password,
-            empty: username===''
-        }) 
+        setPassword(password);
+        setEmpty(username==='');
     }
 
-    handleResetState = () => {
-        this.setState({
-            username:'',
-            password:''
-        })
-    }
+    const handleResetState = () => {
+        setUsername('');
+        setPassword('');
+        setRemember(false);
+        setEmpty(false);
+    };
 
-    render() {
-        return (
+    const handleRemember = () => {
+        setRemember(!remember);
+    };
+    
+    return (
             <div>
                 <label>Username:</label>
-                <input name="username" value={this.state.username} onChange={this.handleUsername}/>
+                <input name="username" value={username} onChange={handleUsername}/>
                 <label>Password:</label>
-                <input type="password" name="password" value={this.state.password} onChange={this.handlePassword}/>
+                <input type="password" name="password" value={password} onChange={handlePassword}/>
                 <br/>
-                <button disabled={this.state.empty}>Login</button>
-                <button onClick={this.handleResetState}>Reset</button>
+                <label>Remember</label>
+                <input type="checkbox" checked={remember} onChange={handleRemember} />
+                <br />
+                <button disabled={empty}>Login</button>
+                <button onClick={handleResetState}>Reset</button>
             </div>
-        )
-    }
+    )
 }
