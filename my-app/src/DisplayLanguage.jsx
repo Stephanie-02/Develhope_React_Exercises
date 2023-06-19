@@ -1,23 +1,11 @@
-import React from 'react'
-import { useState } from 'react';
+import React, { useContext } from 'react';
+import LanguageContext from './LanguageContext';
 
-export default function DisplayLanguage() {
-    const [selectedLanguage, setSelectedLanguage] = useState('English'); 
+const DisplayLanguage = () => {
+  const selectedLanguage = useContext(LanguageContext);
 
-    const handleLanguageChange = (event) => {
-        setSelectedLanguage(event.target.value);
-      };
-      
-  return (
-    <div>
-        <div>
-        <label htmlFor="languageSelect">Select Language:</label>
-        <select id="languageSelect" onChange={handleLanguageChange}>
-          <option value="English">English</option>
-          <option value="Kiswahili">Kiswahili</option>
-          <option value="Italian">Italian</option>
-        </select>
-      </div>
-    </div>
-  )
+  return <p>Selected Language: {selectedLanguage}</p>
 }
+
+export default DisplayLanguage;
+
