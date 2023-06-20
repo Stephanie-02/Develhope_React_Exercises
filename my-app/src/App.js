@@ -8,6 +8,7 @@ import Login from './Login';
 import TodoList from './TodoList';
 import { LanguageProvider } from './LanguageContext';
 import DisplayLanguage from './DisplayLanguage';
+import GithubUser from './GithubUser';
 
 export function App () {
 
@@ -42,6 +43,7 @@ export function App () {
         <LanguageProvider>
           <DisplayLanguage />
         </LanguageProvider>
+        <GithubUser username='Stephanie Achieng'/>
       </div>
     )
 }
