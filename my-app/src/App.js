@@ -9,6 +9,7 @@ import TodoList from './TodoList';
 import { LanguageProvider } from './LanguageContext';
 import DisplayLanguage from './DisplayLanguage';
 import GithubUser from './GithubUser';
+import GithubUserList from './GithubUserList';
 
 export function App () {
 
@@ -44,6 +45,7 @@ export function App () {
           <DisplayLanguage />
         </LanguageProvider>
         <GithubUser username='Stephanie Achieng'/>
+        <GithubUserList />
       </div>
     )
 }
