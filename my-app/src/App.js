@@ -10,7 +10,12 @@ import { LanguageProvider } from './LanguageContext';
 import DisplayLanguage from './DisplayLanguage';
 
 export function App () {
-    const handleRender = (items, handleRemove) => {
+
+  const handleCounterChange = (counterValue) => {
+    console.log('Counter changed', counterValue);
+  }
+  
+  const handleRender = (items, handleRemove) => {
         return (
           <ul>
             {items.map((item) => (
@@ -29,7 +34,7 @@ export function App () {
         <h1>Hello</h1>
         <Welcome name="Stephano" age= {21}/>
         <Counter initialValue={5} incrementAmount={1} incrementInterval={1000} />
-        <ClickCounter />
+        <ClickCounter onCounterChange={handleCounterChange}/>
         <ClickTracker />
         <InteractiveWelcome />
         <Login />
